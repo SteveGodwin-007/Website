@@ -8,9 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@react-three/postprocessing": "^2.19.1",
     "@supabase/supabase-js": "^2.54.0",
     "@tailwindcss/forms": "^0.5.10",
     "framer-motion": "^10.18.0",
+    "postprocessing": "^6.37.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
@@ -18,6 +22,7 @@
     "react-tilt": "^1.0.2",
     "react-tsparticles": "^2.12.2",
     "smooth-scrollbar": "^8.8.4",
+    "three": "^0.152.2",
     "tsparticles": "^3.9.1",
     "tsparticles-slim": "^2.12.0"
   },
