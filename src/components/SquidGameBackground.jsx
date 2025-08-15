@@ -8,7 +8,7 @@ export default function SquidGameBackground({ accent = "#FF0050" }) {
     const c = canvasRef.current;
     const ctx = c.getContext("2d", { alpha: true });
 
-    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const DPR = Math.min(window.devicePixelRatio || 1, 2); // cap at 2x for mobile perf
     let W = (c.width = Math.floor(window.innerWidth * DPR));
     let H = (c.height = Math.floor(window.innerHeight * DPR));
     c.style.width = "100%";
@@ -103,9 +103,9 @@ export default function SquidGameBackground({ accent = "#FF0050" }) {
       vh = H / DPR2;
     };
 
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("touchmove", onMove);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("touchmove", onMove, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
     const fillRect = (color, a = 1) => {
@@ -141,7 +141,6 @@ export default function SquidGameBackground({ accent = "#FF0050" }) {
         ctx.lineTo(vw / 2 + i * 20, vpY);
         ctx.stroke();
       }
-      // shimmer
       ctx.strokeStyle = `rgba(255,255,255,${0.15 + 0.05 * Math.sin(t * 0.02)})`;
       for (let y = vpY; y < vh; y += 50) {
         ctx.beginPath();
@@ -220,7 +219,6 @@ export default function SquidGameBackground({ accent = "#FF0050" }) {
         drawShape(s, pulse);
       }
 
-      // dark overlay for text
       ctx.fillStyle = "rgba(0,0,0,0.2)";
       ctx.fillRect(0, 0, vw, vh);
 

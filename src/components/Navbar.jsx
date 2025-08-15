@@ -16,41 +16,43 @@ export default function Navbar() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-2"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-2 sm:px-4 py-2"
     >
-      <div className="flex items-center justify-between w-full max-w-6xl backdrop-blur-lg bg-black/50 rounded-full border border-pink-500/40 shadow-[0_0_20px_rgba(255,0,80,0.6)] px-6 py-3">
+      <div className="flex items-center justify-between w-full max-w-6xl 
+        backdrop-blur-lg bg-black/50 rounded-full border border-pink-500/40 
+        shadow-[0_0_20px_rgba(255,0,80,0.6)] px-4 sm:px-6 py-2 sm:py-3">
+        
         {/* Logo + Title */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <img
             src="/logos/licet-logo.jpeg"
             alt="LICET"
-            className="w-12 h-12 rounded-full border-2 border-pink-500 shadow-[0_0_10px_rgba(255,0,80,0.7)]"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-pink-500 shadow-[0_0_10px_rgba(255,0,80,0.7)]"
           />
-          <div>
-            <div className="text-lg font-bold tracking-wide text-pink-400 drop-shadow-[0_0_5px_rgba(255,0,80,0.8)]">
+          <div className="leading-tight">
+            <div className="text-base sm:text-lg font-bold tracking-wide text-pink-400 drop-shadow-[0_0_5px_rgba(255,0,80,0.8)]">
               STROM 2K25
             </div>
-            <div className="text-xs text-gray-300">
+            <div className="hidden sm:block text-xs text-gray-300">
               Loyola-ICAM College of Engineering & Technology
             </div>
           </div>
         </div>
 
         {/* Nav Links */}
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-4 sm:space-x-6">
           {links.map((l, index) => (
             <motion.a
               key={l.id}
               href={`#${l.id}`}
-              className="flex items-center gap-2 text-sm text-white hover:text-pink-400 transition-colors relative"
+              className="flex flex-col sm:flex-row items-center sm:gap-2 
+                text-xs sm:text-sm text-white hover:text-pink-400 transition-colors relative"
               whileHover={{ scale: 1.1 }}
             >
-              {/* Icon */}
               {l.icon}
-              {l.label}
-              {/* Squid Game Shape */}
+              <span className="hidden sm:inline">{l.label}</span>
               <motion.span
-                className="ml-1 text-pink-500 drop-shadow-[0_0_8px_rgba(255,0,80,0.8)]"
+                className="ml-0 sm:ml-1 text-pink-500 drop-shadow-[0_0_8px_rgba(255,0,80,0.8)]"
                 animate={{
                   scale: [1, 1.3, 1],
                   opacity: [0.8, 1, 0.8],
