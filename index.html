@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>STROM 2K25 - Squid Game Edition</title>
+    <meta name="description" content="STROM 2K25 - Loyola-ICAM Technical Symposium in Squid Game Style" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logos/squid-mask.png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Config for CDN build -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sgBlack: "#0B0B0B",
+              sgMuted: "#1A1A1A",
+              sgBeige: "#E8DCC2",
+              sgPink: "#FF0050",
+              sgGreen: "#00FF87",
+              sgRed: "#E50914",
+              sgWhite: "#F9F9F9",
+            },
+            fontFamily: {
+              sgTitle: ['"Bebas Neue"', "sans-serif"],
+              sgBody: ['"Montserrat"', "sans-serif"],
+            },
+            boxShadow: {
+              sgNeonPink:
+                "0 0 10px #FF0050, 0 0 20px #FF0050, 0 0 40px #FF0050",
+              sgNeonGreen:
+                "0 0 10px #00FF87, 0 0 20px #00FF87, 0 0 40px #00FF87",
+            },
+            keyframes: {
+              neonPulse: {
+                "0%, 100%": {
+                  opacity: "1",
+                  textShadow:
+                    "0 0 10px currentColor, 0 0 20px currentColor",
+                },
+                "50%": {
+                  opacity: "0.7",
+                  textShadow: "0 0 5px currentColor",
+                },
+              },
+              flicker: {
+                "0%, 19.999%, 22%, 62.999%, 64%, 100%": { opacity: "1" },
+                "20%, 21.999%, 63%, 63.999%": { opacity: "0" },
+              },
+            },
+            animation: {
+              neonPulse: "neonPulse 1.5s infinite ease-in-out",
+              flicker: "flicker 3s infinite",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gradient-to-b from-sgBlack via-sgMuted to-[#070708] text-sgBeige font-sgBody">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

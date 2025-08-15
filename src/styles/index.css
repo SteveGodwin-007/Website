@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root sizing */
+html, body, #root { height: 100%; margin:0; padding:0; }
+
+/* Global background: moody gradient (dark vignette) */
+body {
+  @apply bg-gradient-to-b from-sgBlack via-sgMuted to-[#070708] text-sgBeige;
+  background-size: 400% 400%;
+  --vignette: radial-gradient(ellipse at center, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+/* subtle vignette overlay (use on main wrapper) */
+.vignette {
+  position: relative;
+}
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--vignette);
+  pointer-events: none;
+}
+
+/* Shimmer text utility for hero titles */
+.hero-shimmer {
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.04) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerText 2.8s linear infinite;
+}
+
+/* Button styles */
+.sg-btn {
+  @apply inline-block rounded-md font-semibold px-5 py-2;
+}
+.sg-btn-primary {
+  background: linear-gradient(90deg, #0B3A36 0%, #FF4D98 100%);
+  color: #050608;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.sg-btn-danger {
+  @apply bg-sgRed text-white;
+}
+
+/* Card look */
+.sg-card {
+  @apply bg-[#0b0c0d]/80 border border-[#222428] rounded-2xl p-6 shadow-xl;
+}
+.sg-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  transition: transform .25s cubic-bezier(.2,.9,.3,1);
+  box-shadow: 0 25px 60px rgba(214,40,56,0.08);
+}
+
+/* Icon badge (circle/triangle/square) */
+.sg-symbol {
+  width: 56px; height:56px; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:12px; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04);
+}
+
+/* small animations */
+.fade-in-up { animation: slowFade .9s ease both; }
+.glow-pulse { animation: pulseGlow 2.6s ease-in-out infinite; }
+.float { animation: slowFloat 6s ease-in-out infinite; }
+
+/* Modal backdrop */
+.sg-backdrop {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+}
+
+/* Registration input styling overrides */
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  @apply bg-[#0c0d0e] border border-[#222] text-sgBeige rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sgRed;
+}
+/* Neon glow */
+.neon-text {
+  color: #ff0050;
+  text-shadow: 0 0 5px #ff0050, 0 0 10px #ff0050, 0 0 20px #ff0050;
+}
+
+/* Shapes glow */
+.neon-shape {
+  text-shadow: 0 0 5px #00ff87, 0 0 10px #00ff87, 0 0 20px #00ff87;
+}
+
+/* Squid Game font simulation */
+.squid-font {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.15em;
+}
+/* Neon shapes glow colors */
+.neon-triangle {
+  color: #ff0050; /* pink */
+  text-shadow: 0 0 5px #ff0050, 0 0 15px #ff0050, 0 0 30px #ff0050;
+}
+.neon-square {
+  color: #00ff87; /* green */
+  text-shadow: 0 0 5px #00ff87, 0 0 15px #00ff87, 0 0 30px #00ff87;
+}
+.neon-circle {
+  color: #00c3ff; /* blue */
+  text-shadow: 0 0 5px #00c3ff, 0 0 15px #00c3ff, 0 0 30px #00c3ff;
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+/* Glow effects */
+.glow-pink {
+  box-shadow: 0 0 10px #ff4d88, 0 0 20px #ff4d88, 0 0 40px #ff4d88;
+}
+.glow-green {
+  box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99;
+}
+.glow-purple {
+  box-shadow: 0 0 10px #a64dff, 0 0 20px #a64dff, 0 0 40px #a64dff;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+@keyframes hue-shift-pink {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(40deg); }
+}
+
+@keyframes hue-shift-green {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(60deg); }
+}
+
+@keyframes hue-shift-purple {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(90deg); }
+}
+
+/* Glow styles */
+.glow-pink { box-shadow: 0 0 10px #ff4d88, 0 0 20px #ff4d88, 0 0 40px #ff4d88; }
+.glow-green { box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99; }
+.glow-purple { box-shadow: 0 0 10px #a64dff, 0 0 20px #a64dff, 0 0 40px #a64dff; }
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+
+.animate-hue-pink { animation: hue-shift-pink 6s ease-in-out infinite; }
+.animate-hue-green { animation: hue-shift-green 8s ease-in-out infinite; }
+.animate-hue-purple { animation: hue-shift-purple 10s ease-in-out infinite; }
+
+@keyframes gridmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+/* Apply to your welcome section */
+.welcome-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, black 60%, #ff0055 100%);
+}
+
+/* Background animation example */
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #ff0055, #00ff88, #ff0000);
+  background-size: 300% 300%;
+  animation: moveGradient 8s ease infinite;
+  opacity: 0.3; /* Controls the overlay intensity */
+  z-index: 0;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Keep content above background */
+.welcome-section > * {
+  position: relative;
+  z-index: 1;
+}

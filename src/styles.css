@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,body,#root{height:100%}
+body{background:#041225;color:#e6f6f7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+.welcome-bg{position:relative;overflow:hidden;height:90vh;display:flex;align-items:center;justify-content:center}
+.welcome-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;filter:brightness(0.6)}
+.welcome-content{position:relative;z-index:10;text-align:center;padding:2rem}
+.shimmer{background:linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.35), rgba(255,255,255,0.08));-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 3s linear infinite}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.event-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(6px);padding:1rem;border-radius:12px;transition:transform .25s,box-shadow .25s}
+.event-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 10px 30px rgba(14,165,164,0.12)}
+/* Apply to your welcome section */
+.welcome-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, black 60%, #ff0055 100%);
+}
+
+/* Background animation example */
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #ff0055, #00ff88, #ff0000);
+  background-size: 300% 300%;
+  animation: moveGradient 8s ease infinite;
+  opacity: 0.3; /* Controls the overlay intensity */
+  z-index: 0;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Keep content above background */
+.welcome-section > * {
+  position: relative;
+  z-index: 1;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top left, #ff004f, transparent 40%),
+              radial-gradient(circle at bottom right, #00ff95, transparent 40%),
+              #0a0a0a;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.bg-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-animated::before,
+.bg-animated::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 0, 79, 0.3);
+  border-radius: 50%;
+  animation: float 12s infinite ease-in-out;
+}
+
+.bg-animated::after {
+  background: rgba(0, 255, 149, 0.3);
+  width: 500px;
+  height: 500px;
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50px, -50px);
+  }
+  50% {
+    transform: translate(50px, 50px);
+  }
+}
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.shape {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 0, 85, 0.3);
+  border-radius: 20%;
+  filter: blur(40px);
+  animation: float 8s infinite ease-in-out;
+}
+
+.shape:nth-child(2) {
+  top: 20%;
+  left: 70%;
+  background: rgba(0, 255, 170, 0.3);
+}
+
+.shape:nth-child(3) {
+  top: 60%;
+  left: 30%;
+  background: rgba(255, 0, 0, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-30px) translateX(15px); }
+}
+
+.delay-2000 { animation-delay: 2s; }
+.delay-4000 { animation-delay: 4s; }
