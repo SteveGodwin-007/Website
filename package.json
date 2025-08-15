@@ -22,7 +22,7 @@
     "react-tilt": "^1.0.2",
     "react-tsparticles": "^2.12.2",
     "smooth-scrollbar": "^8.8.4",
-    "three": "^0.152.2",
+    "three": "^0.179.0",
     "tsparticles": "^3.9.1",
     "tsparticles-slim": "^2.12.0"
   },
