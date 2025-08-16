@@ -15,9 +15,9 @@ export default function Welcome({ accent = "#FF0050" }) {
   };
 
   const floatAnim = (duration, offset = 0) => ({
-    y: [0, -15, 0],
-    rotate: [0, 6, -6, 0],
-    opacity: [0.6, 1, 0.6],
+    y: [0, -10, 0], // smaller float
+    rotate: [0, 4, -4, 0], // lighter rotation
+    opacity: [0.7, 1, 0.7],
     transition: { duration, repeat: Infinity, ease: "easeInOut", delay: offset }
   });
 
@@ -26,25 +26,34 @@ export default function Welcome({ accent = "#FF0050" }) {
       id="welcome"
       className="relative w-full text-center min-h-screen flex flex-col justify-center items-center px-4"
     >
-      {/* Floating Shapes */}
+      {/* Floating Shapes - Optimized for mobile */}
       <motion.div
-        className="absolute left-[10%] top-[22%] w-12 h-12 sm:w-16 sm:h-16 rounded-full border-4 border-pink-500 shadow-[0_0_20px_rgba(255,0,80,0.7)] -z-10"
-        animate={floatAnim(6)}
+        className="absolute left-[10%] top-[22%] w-8 h-8 sm:w-12 sm:h-12 rounded-full 
+                   border-2 sm:border-4 border-pink-500 
+                   shadow-[0_0_10px_rgba(255,0,80,0.6)] sm:shadow-[0_0_20px_rgba(255,0,80,0.7)] -z-10"
+        animate={floatAnim(8)}
       />
       <motion.div
-        className="absolute right-[12%] top-[28%] w-0 h-0 border-l-[30px] border-r-[30px] sm:border-l-[40px] sm:border-r-[40px] border-b-[50px] sm:border-b-[70px] border-l-transparent border-r-transparent border-b-pink-500 drop-shadow-[0_0_20px_rgba(255,0,80,0.7)] -z-10"
-        animate={floatAnim(7, 0.5)}
+        className="absolute right-[12%] top-[28%] w-0 h-0 
+                   border-l-[20px] border-r-[20px] sm:border-l-[30px] sm:border-r-[30px] 
+                   border-b-[35px] sm:border-b-[50px] 
+                   border-l-transparent border-r-transparent border-b-pink-500 
+                   drop-shadow-[0_0_10px_rgba(255,0,80,0.6)] sm:drop-shadow-[0_0_20px_rgba(255,0,80,0.7)] -z-10"
+        animate={floatAnim(9, 0.5)}
       />
       <motion.div
-        className="absolute left-[48%] bottom-[18%] w-14 h-14 sm:w-20 sm:h-20 border-4 border-pink-500 shadow-[0_0_20px_rgba(255,0,80,0.7)] -z-10"
-        animate={floatAnim(8, 1)}
+        className="absolute left-[48%] bottom-[18%] w-10 h-10 sm:w-14 sm:h-14 
+                   border-2 sm:border-4 border-pink-500 
+                   shadow-[0_0_10px_rgba(255,0,80,0.6)] sm:shadow-[0_0_20px_rgba(255,0,80,0.7)] -z-10"
+        animate={floatAnim(10, 1)}
       />
 
       {/* Logo */}
       <motion.img
         src="/logos/strom-logo.png"
         alt="STROM"
-        className="h-40 sm:h-56 md:h-72 lg:h-[24rem] mb-6 drop-shadow-[0_0_40px_rgba(255,0,80,1)] relative z-10 mx-auto"
+        className="h-32 sm:h-40 md:h-56 lg:h-72 mb-6 
+                   drop-shadow-[0_0_25px_rgba(255,0,80,0.9)] relative z-10 mx-auto"
         initial={{ opacity: 0, y: -20, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9 }}
@@ -52,7 +61,9 @@ export default function Welcome({ accent = "#FF0050" }) {
       />
 
       {/* Title */}
-      <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.35em] relative z-10 mb-4">
+      <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold 
+                     tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.35em] 
+                     relative z-10 mb-4">
         {letters.map((ch, i) => (
           <motion.span
             key={i}
@@ -74,7 +85,9 @@ export default function Welcome({ accent = "#FF0050" }) {
 
       {/* Description */}
       <motion.p
-        className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white max-w-xl sm:max-w-2xl mx-auto relative z-10 leading-relaxed drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]"
+        className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-white 
+                   max-w-md sm:max-w-xl md:max-w-2xl mx-auto relative z-10 
+                   leading-relaxed drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
@@ -84,26 +97,35 @@ export default function Welcome({ accent = "#FF0050" }) {
         technical excellence.
       </motion.p>
 
-      {/* Buttons */}
+      {/* Single Button */}
       <motion.div
-        className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 relative z-10"
+        className="mt-8 sm:mt-10 flex items-center justify-center relative z-10"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0 }}
       >
-        <a
+        <motion.a
           href="#events"
-          className="btn-neon px-6 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto text-center"
+          className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg md:text-xl font-bold rounded-full 
+                     bg-pink-600 text-white shadow-[0_0_20px_rgba(255,0,80,0.8)] 
+                     border border-pink-400 tracking-wider"
           style={{ ["--accent"]: accent }}
+          whileHover={{
+            scale: 1.1,
+            boxShadow:
+              "0 0 35px rgba(255,0,80,1), 0 0 60px rgba(255,0,80,0.7)"
+          }}
+          animate={{
+            boxShadow: [
+              "0 0 15px rgba(255,0,80,0.6)",
+              "0 0 30px rgba(255,0,80,1)",
+              "0 0 15px rgba(255,0,80,0.6)"
+            ]
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
         >
           Explore Events
-        </a>
-        <a
-          href="#contact"
-          className="btn-outline px-6 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto text-center"
-        >
-          Join the Game
-        </a>
+        </motion.a>
       </motion.div>
     </section>
   );
